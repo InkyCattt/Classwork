@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="shortcut icon" type="x-icon" href="UI/Icon1.png">
+    <style>
+        /* Styling for the header bar */
+        .header-bar {
+            background-color: white;
+            border-bottom: 1px solid #ccc;
+            color: black;
+            display: flex;
+            margin: 0;
+        }
+
+        /* Styling for buttons */
+        .help-button {
+            border: none;
+            background: none;
+            color: #252525;
+            cursor: pointer;
+            font-size: 25px;
+            padding: 10px 20px;
+            position: relative;
+            margin-left: auto;
+            left: -9.5px;
+            margin-bottom: auto;
+            bottom: -10%;
+        }
+
+        /* Circle for highlighting on hover */
+        .help-button::after {
+            content: '';
+            position: absolute;
+            border: 2px solid #333;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* Hover text for buttons */
+        .help-button::before {
+            position: absolute;
+            background: #333;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            visibility: hidden;
+        }
+
+        .help-button:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .help-button:hover::after {
+            opacity: 1;
+        }
+
+        /* Styling for buttons */
+        .title-button {
+            border: none;
+            background: none;
+            color: #252525;
+            cursor: pointer;
+            font-size: 25px;
+            padding: 10px 20px;
+            position: relative;
+            margin-left: auto;
+            left: -9.5px;
+        }
+
+        /* Circle for highlighting on hover */
+        .title-button::after {
+            content: '';
+            position: absolute;
+            border: 2px solid #333;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* Hover text for buttons */
+        .title-button::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            background: #333;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            visibility: hidden;
+        }
+
+        .title-button:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .title-button:hover::after {
+            opacity: 1;
+        }
+
+        /* Styling for buttons */
+        .button {
+            border: none;
+            background: none;
+            color: #252525;
+            cursor: pointer;
+            font-size: 25px;
+            margin-right: -10px;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        /* Circular background for highlighting on hover */
+        .circle {
+            position: absolute;
+            border: 2px solid #333;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Circle for highlighting on hover */
+        .button::after {
+            content: '';
+            position: absolute;
+            border: 2px solid #333;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* Hover text for buttons */
+        .button::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            background: #333;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            visibility: hidden;
+        }
+
+        .button:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .button:hover::after {
+            opacity: 1;
+        }
+
+        /* Style for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+        }
+
+        /* Style for input fields and buttons in the modal */
+        .input-field {
+            margin-bottom: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field label {
+            display: block;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        
+        /* Style for input fields and buttons in the modal */
+        .input-field-contact {
+            margin-bottom: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field-contact label {
+            display: block;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field-contact input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .modal-buttons {
+            text-align: right;
+            margin-top: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        /* Style for buttons in the modal */
+        .modal-buttons button {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            margin-right: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        /* Style for the "Create" button when all fields are filled */
+        .create-button-enabled {
+            color: #fff;
+        }
+
+        /* Style for the "Create" button when not all fields are filled */
+        .modal-buttons button:disabled {
+            background-color: #999; /* Set the background color for a disabled button */
+            color: #fff;
+        }
+
+        .mainText {
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .class-box {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 1%; /* 5% gap (1% on each side) */
+            width: calc(12% - 2%); /* Adjust width to account for margin */
+        }
+
+        /* ... Your existing styles ... */
+        .class-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .upside-down-arrow {
+            transform: rotate(180deg);
+            display: inline-block;
+        }
+
+        .title {
+            color: #313131;
+            font-family: sans-serif;
+            margin-left: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <button class="button" data-tooltip="Main Menu" onclick="navigateTo('Home')">
+            <div class="circle"></div>
+            <img src="UI/Home.png" alt="Menu Icon">
+        </button>        
+        <button class="button add-class-button" data-tooltip="Create Class" onclick="openModal()">
+            <div class="circle"></div>
+            <img src="UI/Plus.png" alt="Plus Icon" style="margin-top: -1px;">
+        </button>
+        <button class="button" data-tooltip="Upload Class" onclick="openFileUploader()">
+            <div class="circle"></div>
+            <img src="UI/Arrow.png" alt="Arrow Icon" style="margin-top: 7px;">
+        </button>
+        <div style="flex: 1;"></div> <!-- Added to push the Google Classroom button to the right -->
+        <h3 class="title" >Classwork</h3>
+        <button class="title-button" data-tooltip="Google Classroom" onclick="navigateToClassroom()">
+            <div class="circle"></div>
+            <img src="UI/Class.png" alt="Class Icon" style="margin-top: 0px;">
+        </button>
+    </div>
+
+    <!-- The modal -->
+    <div class="modal" id="addClassModal">
+        <div class="modal-content">
+            <h2>Create Class</h2>
+            <div class="input-field">
+                <label for="className">Class Name:</label>
+                <input type="text" id="className">
+            </div>
+            <div class="input-field">
+                <label for="teacher">Teacher:</label>
+                <input type="text" id="teacher">
+            </div>
+            <div class="input-field">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject">
+            </div>
+            <div class="input-field">
+                <label for="room">Room:</label>
+                <input type="text" id="room">
+            </div>
+            <div class="modal-buttons">
+                <button onclick="closeModal()">Cancel</button>
+                <button onclick="createClass()" id="createButton" disabled>Create</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <h2>Contact Me</h2>
+            <form action="https://formsubmit.co/xzavius027@email.com" method="POST">
+                <div class="input-field-contact">
+                    <label for="className">First Name:</label>
+                    <input type="text" name="fname" placeholder="John" id="fname">
+                </div>
+                <div class="input-field-contact">
+                    <label for="teacher">Last Name:</label>
+                    <input type="text" name="lname" placeholder="Doe" id="lname">
+                </div>
+                <div class="input-field-contact">
+                    <label for="subject">Gmail:</label>
+                    <input type="text" name="gmail" placeholder="example@gmail.com" id="gmail">
+                </div>
+                <div class="input-field-contact">
+                    <label for="room">Message:</label>
+                    <input type="text" name="msg" placeholder="....." id="message">
+                </div>
+                <div class="modal-buttons">
+                    <button onclick="closeContactModal()">Cancel</button>
+                    <button onclick='https://formsubmit.co/xzavius027@email.com' id="sendButton" disabled>Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="class-container" id="classContainer">
+        <!-- Class boxes will be added here -->
+    </div>
+
+    <button class="help-button" onclick="openContactModal()">
+        <div class="circle"></div>
+        <img src="UI/QM.png" alt="Help Icon">
+    </button>
+
+    <script src="./JavaScripts/Code.JS"></script>
+</body>
+</html>
