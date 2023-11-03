@@ -300,6 +300,24 @@
             color: #fff;
         }
 
+        .modal-buttons-etc {
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        /* Style for buttons in the modal */
+        .modal-buttons-etc button {
+            cursor: pointer;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+            position: absolute;
+            top: 105%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
         /* Centered container for image and text */
         .center-container {
             position: absolute;
@@ -337,7 +355,7 @@
         <h2>Error 404 - Page Not Found</h2>
         <p>Oops! It seems like the page you were looking for doesn't exist or may have been moved. Please check the URL for any typos or click the button below to return to the homepage.</p>
 
-        <div class="modal-buttons">
+        <div class="modal-buttons-etc">
             <button onclick="navigateTo('Home')">Home</button>
         </div>
     </div>
