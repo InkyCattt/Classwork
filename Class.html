@@ -23,6 +23,61 @@
             bottom: 0;
             left: 0;
         }
+
+        /* Styling for buttons */
+        .help-button {
+            border: none;
+            background: none;
+            color: #252525;
+            cursor: pointer;
+            font-size: 25px;
+            padding: 10px 20px;
+            position: relative;
+            margin-left: auto;
+            left: -9.5px;
+            margin-bottom: auto;
+            bottom: -10%;
+        }
+
+        /* Circle for highlighting on hover */
+        .help-button::after {
+            content: '';
+            position: absolute;
+            border: 2px solid #333;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* Hover text for buttons */
+        .help-button::before {
+            position: absolute;
+            background: #333;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            visibility: hidden;
+        }
+
+        .help-button:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .help-button:hover::after {
+            opacity: 1;
+        }
         
         /* Styling for buttons */
         .title-button {
@@ -356,6 +411,6 @@
         </button>
     </div>
 
-    <script src="./JavaScripts/ClassCode.JS"></script>
+    <script src="./JavaScripts/ClassCode.JS"></script> 
 </body>
 </html>
