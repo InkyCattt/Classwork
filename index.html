@@ -209,8 +209,72 @@
             opacity: 1;
         }
 
+        /* Style for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+        }
+
+        /* Style for input fields and buttons in the modal */
+        .input-field {
+            margin-bottom: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field label {
+            display: block;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        
+        /* Style for input fields and buttons in the modal */
+        .input-field-contact {
+            margin-bottom: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field-contact label {
+            display: block;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field-contact input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
         .modal-buttons {
             text-align: right;
+            margin-top: 10px;
             font-family: sans-serif; /* Set the font family to sans-serif */
         }
 
@@ -221,12 +285,19 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: white;
+            margin-right: 10px;
             font-family: sans-serif; /* Set the font family to sans-serif */
-            position: absolute;
-            top: 105%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+        }
+
+        /* Style for the "Create" button when all fields are filled */
+        .create-button-enabled {
+            color: #fff;
+        }
+
+        /* Style for the "Create" button when not all fields are filled */
+        .modal-buttons button:disabled {
+            background-color: #999; /* Set the background color for a disabled button */
+            color: #fff;
         }
 
         /* Centered container for image and text */
@@ -267,6 +338,33 @@
 
         <div class="modal-buttons">
             <button onclick="navigateTo('Home')">Home</button>
+        </div>
+    </div>
+
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <h2>Contact Me</h2>
+            <form action="https://formsubmit.co/xzavius027@gmail.com" method="POST">
+                <div class="input-field-contact">
+                    <label for="className">First Name:</label>
+                    <input type="text" name="fname" placeholder="John" id="fname">
+                </div>
+                <div class="input-field-contact">
+                    <label for="teacher">Last Name:</label>
+                    <input type="text" name="lname" placeholder="Doe" id="lname">
+                </div>
+                <div class="input-field-contact">
+                    <label for="subject">Gmail:</label>
+                    <input type="text" name="gmail" placeholder="example@gmail.com" id="gmail">
+                </div>
+                <div class="input-field-contact">
+                    <label for="room">Message:</label>
+                    <input type="text" name="message" placeholder="....." id="message">
+                </div>
+                <div class="modal-buttons">
+                    <button onclick='https://formsubmit.co/xzavius027@gmail.com' id="sendButton" disabled>Send</button>
+                </div>
+            </form>
         </div>
     </div>
 
