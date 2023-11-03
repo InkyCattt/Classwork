@@ -13,6 +13,17 @@
             margin: 0;
         }
 
+        .bottom-bar {
+            background-color: white;
+            border-bottom: 1px solid #ccc;
+            color: black;
+            display: flex;
+            margin: 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
         /* Styling for buttons */
         .help-button {
             border: none;
@@ -391,10 +402,12 @@
         <!-- Class boxes will be added here -->
     </div>
 
-    <button class="help-button" onclick="openContactModal()">
-        <div class="circle"></div>
-        <img src="UI/QM.png" alt="Help Icon">
-    </button>
+    <div class="bottom-bar">      
+        <button class="help-button" onclick="openContactModal()">
+            <div class="circle"></div>
+            <img src="UI/QM.png" alt="Help Icon">
+        </button>
+    </div>
 
     <script src="./JavaScripts/Code.JS"></script>
 </body>
