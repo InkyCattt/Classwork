@@ -16,3 +16,17 @@ function navigateTo(pageName) {
         window.location.href = "Error404.html";
     }
 }
+
+function openContactModal() {
+    document.getElementById('contactModal').style.display = 'block';
+}
+
+function closeContactModal() {
+    document.getElementById('contactModal').style.display = 'none';
+}
+
+// Add event listeners to check for input changes
+const contactInputFields = document.querySelectorAll('.input-field-contact input');
+contactInputFields.forEach(function (input) {
+    input.addEventListener('input', checkInputsContact);
+});
