@@ -13,6 +13,16 @@
             margin: 0;
         }
 
+        .bottom-bar {
+            background-color: white;
+            border-bottom: 1px solid #ccc;
+            color: black;
+            display: flex;
+            margin: 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
         
         /* Styling for buttons */
         .title-button {
@@ -335,6 +345,15 @@
 
     <div class="class-category-container" id="classCategoryContainer">
         <!-- Class boxes will be added here -->
+    </div>
+
+    <div class="bottom-bar">   
+        <p class="title">ㅤ</p>   
+        <p class="title">Made By InkyCattt</p>   
+        <button class="help-button" onclick="openContactModal()">
+            <div class="circle"></div>
+            <img src="UI/QM.png" alt="Help Icon">
+        </button>
     </div>
 
     <script src="./JavaScripts/ClassCode.JS"></script>
