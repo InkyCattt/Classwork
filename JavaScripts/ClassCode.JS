@@ -14,6 +14,20 @@ function deleteCategory(categoryBox) {
     updateLocalStorage(); // Update local storage after deletion
 }
 
+function openContactModal() {
+    document.getElementById('contactModal').style.display = 'block';
+}
+
+function closeContactModal() {
+    document.getElementById('contactModal').style.display = 'none';
+}
+
+// Add event listeners to check for input changes
+const contactInputFields = document.querySelectorAll('.input-field-contact input');
+contactInputFields.forEach(function (input) {
+    input.addEventListener('input', checkInputsContact);
+});
+
 function openAddAssignmentsModal(ID) {
     document.getElementById('addAssignmentsModal').style.display = 'block';
     lastID = ID;
