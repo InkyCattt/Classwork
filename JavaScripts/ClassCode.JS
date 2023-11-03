@@ -28,6 +28,22 @@ contactInputFields.forEach(function (input) {
     input.addEventListener('input', checkInputsContact);
 });
 
+function checkInputsContact() {
+    const fname = document.getElementById('fname').value;
+    const lname = document.getElementById('lname').value;
+    const gmail = document.getElementById('gmail').value;
+    const message = document.getElementById('message').value;
+    const sendButton = document.getElementById('sendButton');
+
+    if (fname && lname && gmail && message) {
+        // All fields are filled, enable the "Create" button
+        sendButton.removeAttribute('disabled');
+    } else {
+        // Not all fields are filled, disable the "Create" button
+        sendButton.setAttribute('disabled', 'disabled');
+    }
+}
+
 function openAddAssignmentsModal(ID) {
     document.getElementById('addAssignmentsModal').style.display = 'block';
     lastID = ID;
