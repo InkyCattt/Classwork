@@ -259,6 +259,25 @@
             font-family: sans-serif; /* Set the font family to sans-serif */
         }
 
+        /* Style for input fields and buttons in the modal */
+        .input-field-contact {
+            margin-bottom: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field-contact label {
+            display: block;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field-contact input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
         .modal-buttons {
             text-align: right;
             margin-top: 10px;
@@ -400,6 +419,33 @@
 
     <div class="class-category-container" id="classCategoryContainer">
         <!-- Class boxes will be added here -->
+    </div>
+
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <h2>Contact Me</h2>
+            <form action="https://formsubmit.co/xzavius027@gmail.com" method="POST">
+                <div class="input-field-contact">
+                    <label for="className">First Name:</label>
+                    <input type="text" name="fname" placeholder="John" id="fname">
+                </div>
+                <div class="input-field-contact">
+                    <label for="teacher">Last Name:</label>
+                    <input type="text" name="lname" placeholder="Doe" id="lname">
+                </div>
+                <div class="input-field-contact">
+                    <label for="subject">Gmail:</label>
+                    <input type="text" name="gmail" placeholder="example@gmail.com" id="gmail">
+                </div>
+                <div class="input-field-contact">
+                    <label for="room">Message:</label>
+                    <input type="text" name="message" placeholder="....." id="message">
+                </div>
+                <div class="modal-buttons">
+                    <button onclick='https://formsubmit.co/xzavius027@gmail.com' id="sendButton" disabled>Send</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <div class="bottom-bar">   
