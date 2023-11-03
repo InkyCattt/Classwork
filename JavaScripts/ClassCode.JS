@@ -11,7 +11,7 @@ function closeCategoryModal() {
 
 function deleteCategory(categoryBox) {
     classContainer.removeChild(categoryBox); // Remove the class box from the container
-    updateLocalStorage(); // Update local storage after deletion
+    updateLocalStorage('class-category-box', classContainer);
 }
 
 function openContactModal() {
@@ -76,13 +76,12 @@ function checkInputsAssignment() {
 
 function deleteAssignment(assignmentBox, categoryContainer) {
     categoryContainer.removeChild(assignmentBox); // Remove the assignment box from the container
-    updateLocalStorage(); // Update local storage after deletion
+    updateLocalStorage('class-assignment-box', classContainer);
 }
 
 function addAssignment() {
     const assignmentName = document.getElementById('assignmentName').value;
     const link = document.getElementById('link').value;
-    const container = document.getElementById(lastID).value;
 
     if (assignmentName && link) {
         let imageSrc;
@@ -104,7 +103,7 @@ function addAssignment() {
             // Default image if not matching any of the types
             imageSrc = "UI/Icons/Default.png";
         }
-        
+
         const assignmentBox = document.createElement('div');
         assignmentBox.className = 'class-assignment-box';
         assignmentBox.innerHTML = `
@@ -122,12 +121,20 @@ function addAssignment() {
             </button>
         `;
 
-        container.appendChild(assignmentBox);
+        classContainer.appendChild(assignmentBox);
 
         document.getElementById('assignmentName').value = '';
         document.getElementById('link').value = '';
 
         closeAddAssignmentsModal();
+
+        // Update local storage after adding a new assignment
+        const assignmentList = [];
+        const assignmentBoxes = classContainer.getElementsByClassName('class-assignment-box');
+        for (const assignmentBox of assignmentBoxes) {
+            assignmentList.push(assignmentBox.innerHTML);
+        }
+        localStorage.setItem(assignmentLocalStorageKey, JSON.stringify(assignmentList));
     }
 }
 
@@ -216,22 +223,18 @@ function createCategory() {
 }
 
 // Update local storage
-function updateLocalStorage() {
-    const categoryList = [];
-    const categoryBoxes = classContainer.getElementsByClassName('class-category-box');
-    for (const categoryBox of categoryBoxes) {
-        categoryList.push(categoryBox.innerHTML);
+function updateLocalStorage(dataKey, container) {
+    const items = [];
+    const itemsInContainer = container.getElementsByClassName(dataKey);
+    for (const item of itemsInContainer) {
+        items.push(item.innerHTML);
     }
-
-    if (classNameParam) {
-        localStorage.setItem(classNameParam, JSON.stringify(categoryList));
-    } else {
-        localStorage.setItem('categoryData', JSON.stringify(categoryList));
-    }
+    localStorage.setItem(classNameParam, JSON.stringify(items));
 }
 
 // Function to load category data based on the class parameter
-function loadCategoryFromLocalStorage(className) {
+function loadFromLocalStorage(className) {
+    // Load categories from local storage
     const categoryData = localStorage.getItem(className);
     if (categoryData) {
         const categoryList = JSON.parse(categoryData);
