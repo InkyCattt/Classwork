@@ -250,7 +250,7 @@ function loadFromLocalStorage(className) {
 // Load categories from local storage when the page loads
 window.addEventListener('load', function() {
     if (classNameParam) {
-        loadCategoryFromLocalStorage(classNameParam);
+        loadFromLocalStorage(classNameParam);
         // Handle the class parameter, e.g., display it on the page
     }
 });
