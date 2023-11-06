@@ -195,7 +195,7 @@ function createCategory() {
                 <div class="circle"></div>
                 <img src="UI/TrashCan.png" alt="Trash Icon" style="margin-top: 6px;">
             </button>
-            <button class="button" data-tooltip="Add Assignments" onclick="openAddAssignmentsModal(${document.getElementById('categoryName').value})">
+            <button class="button" data-tooltip="Add Assignments" onclick="openAddAssignmentsModal()">
                 <div class="circle"></div>
                 <img src="UI/Plus.png" alt="Plus Icon"">
             </button>
