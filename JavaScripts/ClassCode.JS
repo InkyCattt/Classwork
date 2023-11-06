@@ -1,5 +1,4 @@
 const classContainer = document.getElementById('classCategoryContainer');
-let lastID = "";
 
 function openCategoryModal() {
     document.getElementById('addCategoryModal').style.display = 'block';
@@ -45,9 +44,7 @@ function checkInputsContact() {
 }
 
 function openAddAssignmentsModal(ID) {
-    document.getElementById('addAssignmentsModal').style.display = 'block';
-    lastID = ID;
-    console.log(lastID);
+    document.getElementById('addAssignmentsModal').style.display = 'block';;
 }
 
 function closeAddAssignmentsModal() {
