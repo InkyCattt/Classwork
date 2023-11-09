@@ -306,20 +306,18 @@
             color: #fff;
         }
 
-        /* ... Your existing styles ... */
         .class-category-container {
-            display: flex;
-            justify-content: center;
+            display: block; /* Change display to block to stack categories vertically */
+            margin: 0 auto; /* Center align the category boxes horizontally */
         }
-
+    
         .class-category-box {
             background-color: #ffffff;
             border: 1px solid #ccc;
             border-radius: 10px;
             padding: 10px;
-            margin: 1%; /* 5% gap (1% on each side) */
-            width: calc(32% - 2%); /* Adjust width to account for margin and center alignment */
-            margin-bottom: 20px; /* Add space between category boxes */
+            margin: 10px 0; /* Add margin between category boxes to space them out */
+            width: calc(100% - 20px); /* Adjust width to account for margin */
         }
         
         .mainText {
