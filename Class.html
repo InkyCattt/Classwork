@@ -310,7 +310,7 @@
         .class-category-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-start;
+            justify-content: center;
         }
 
         .class-category-box {
@@ -319,7 +319,8 @@
             border-radius: 10px;
             padding: 10px;
             margin: 1%; /* 5% gap (1% on each side) */
-            width: 16%; /* Adjust width to account for margin */
+            width: calc(32% - 2%); /* Adjust width to account for margin and center alignment */
+            margin-bottom: 20px; /* Add space between category boxes */
         }
         
         .mainText {
