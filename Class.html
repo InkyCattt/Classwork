@@ -307,12 +307,10 @@
         }
 
         .class-category-container {
-            display: block; /* Use flexbox to center vertically */
-              flex-direction: column; /* Stack categories vertically */
-              justify-content: center; /* Center content vertically */
-              align-items: center; /* Center content horizontally */
-              width: 100%; /* Optionally set a width if needed */
-              height: 100vh; /* Set the height to 100% of the viewport height */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            flex-direction: column; /* Stack categories vertically */
         }
     
         .class-category-box {
