@@ -357,6 +357,25 @@
         .assignment-name p {
             margin: 5px 0; /* Add margin to the assignment name */
         }
+
+        /* Styling for the pop-up */
+        .popup {
+          position: fixed;
+          bottom: 10px;
+          right: 10px;
+          background-color: red;
+          color: white;
+          padding: 10px;
+          border-radius: 10px;
+          opacity: 1; /* Initial opacity */
+          transition: opacity 1s ease-in-out; /* Add a transition effect for opacity */
+        }
+    
+        .popup h2 {
+          font-size: 15px; /* Change the font size to 15px or any other preferred size */
+          font-family: sans-serif; /* Set the font family to sans-serif */
+          margin: 0; /* Remove default margin to align text properly */
+        }
         
         .title {
             color: #313131;
@@ -383,6 +402,11 @@
             <img src="UI/Class.png" alt="Class Icon" style="margin-top: 0px;">
         </button>
     </div>
+
+      <!-- Pop-up content -->
+      <div class="popup">
+        <h2>Warning! This page is under construction and may not provide complete information. Proceed with awareness.</h2>
+      </div
 
     <!-- The modal -->
     <div class="modal" id="addCategoryModal">
