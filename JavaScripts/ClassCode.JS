@@ -21,6 +21,19 @@ function closeContactModal() {
     document.getElementById('contactModal').style.display = 'none';
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the pop-up element
+    var popup = document.querySelector('.popup');
+
+    // Show the pop-up
+    popup.style.opacity = '1';
+
+    // Hide the pop-up after 2.5 seconds with a fade-out effect
+    setTimeout(function () {
+        popup.style.opacity = '0';
+    }, 2500);
+});
+
 // Add event listeners to check for input changes
 const contactInputFields = document.querySelectorAll('.input-field-contact input');
 contactInputFields.forEach(function (input) {
