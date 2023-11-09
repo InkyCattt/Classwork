@@ -307,8 +307,12 @@
         }
 
         .class-category-container {
-            display: block; /* Change display to block to stack categories vertically */
-            justify-content: center; /* Center content vertically */
+            display: block; /* Use flexbox to center vertically */
+              flex-direction: column; /* Stack categories vertically */
+              justify-content: center; /* Center content vertically */
+              align-items: center; /* Center content horizontally */
+              width: 100%; /* Optionally set a width if needed */
+              height: 100vh; /* Set the height to 100% of the viewport height */
         }
     
         .class-category-box {
