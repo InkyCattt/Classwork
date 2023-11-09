@@ -188,7 +188,7 @@ function createCategory() {
         categoryBox.id = categoryName;
         categoryBox.innerHTML = `
             <div class="mainText">
-                <p> class="CName"<strong>Category Name:</strong> ${categoryName}</p>
+                <p class="CName"<strong>Category Name:</strong> ${categoryName}</p>
                 <p><strong>Information:</strong> ${information}</p>
             </div>
             <button class="button" data-tooltip="Delete Category" onclick="deleteCategory(this.parentNode)">
