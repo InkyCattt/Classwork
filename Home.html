@@ -1,141 +1,416 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="x-icon" href="./UI/Ink.png">
-    <title>Ink</title>
+    <title>Home</title>
+    <link rel="shortcut icon" type="x-icon" href="UI/Icon1.png">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Styling for the header bar */
+        .header-bar {
+            background-color: white;
+            border-bottom: 1px solid #ccc;
+            color: black;
+            display: flex;
             margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #fff;
         }
-        .container {
-            max-width: 800px;
-            margin: 100px auto 0;
-            text-align: center;
-        }
-        .top-right-container {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 20px;
-        }
-        .logo {
-            margin-bottom: 20px;
-            font-size: 48px;
-            color: #ffffff;
-            font-weight: bold;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .search-bar {
-            width: 80%;
-            max-width: 600px;
-            padding: 10px;
-            border: 1px solid #fff;
-            border-radius: 24px;
-            outline: none;
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: #000;
-            color: #fff;
-        }
-        .search-btn {
-            margin-top: 10px;
-            padding: 8px 20px;
-            border: 1px solid #ffffff;
-            border-radius: 5px;
-            background-color: #000000;
-            color: #ffffff;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .search-btn:hover {
-            background-color: #ffffff;
-            border-color: #000000;
-            color: #000000;
-        }
-        .etc-btn {
-            margin-top: -10px;
-            padding: 8px 20px;
-            border: 1px solid #ffffff;
-            border-radius: 5px;
-            background-color: #000000;
-            color: #ffffff;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .etc-btn:hover {
-            background-color: #ffffff;
-            border-color: #000000;
-            color: #000000;
-        }
-        .menu-container {
-            display: none;
+
+        .bottom-bar {
+            background-color: white;
+            border-bottom: 1px solid #ccc;
+            color: black;
+            display: flex;
+            margin: 0;
             position: fixed;
-            height: 65%;
-            width: 25%;
+            bottom: 0;
+            left: 0;
+        }
+
+        /* Styling for buttons */
+        .help-button {
+            border: none;
+            background: none;
+            color: #252525;
+            cursor: pointer;
+            font-size: 25px;
+            padding: 10px 20px;
+            position: relative;
+            margin-left: auto;
+            left: -9.5px;
+            margin-bottom: auto;
+            bottom: -10%;
+        }
+
+        /* Circle for highlighting on hover */
+        .help-button::after {
+            content: '';
+            position: absolute;
+            border: 2px solid #333;
+            border-radius: 50%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #000000;
-            border: 1px solid #ffffff;
-            border-radius: 5px;
-            color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .menu-container .dot-point-list {
-            list-style-type: disc; /* Use disc for dot points */
-            padding: 0;
-            margin-left: 20px; /* Add some left margin for better spacing */
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
         }
 
-        .menu-container .dot-point-list li {
-            margin-bottom: 10px;
+        /* Hover text for buttons */
+        .help-button::before {
+            position: absolute;
+            background: #333;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            visibility: hidden;
         }
+
+        .help-button:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .help-button:hover::after {
+            opacity: 1;
+        }
+
+        /* Styling for buttons */
+        .title-button {
+            border: none;
+            background: none;
+            color: #252525;
+            cursor: pointer;
+            font-size: 25px;
+            padding: 10px 20px;
+            position: relative;
+            margin-left: auto;
+            left: -9.5px;
+        }
+
+        /* Circle for highlighting on hover */
+        .title-button::after {
+            content: '';
+            position: absolute;
+            border: 2px solid #333;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* Hover text for buttons */
+        .title-button::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            background: #333;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            visibility: hidden;
+        }
+
+        .title-button:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .title-button:hover::after {
+            opacity: 1;
+        }
+
+        /* Styling for buttons */
+        .button {
+            border: none;
+            background: none;
+            color: #252525;
+            cursor: pointer;
+            font-size: 25px;
+            margin-right: -10px;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        /* Circular background for highlighting on hover */
+        .circle {
+            position: absolute;
+            border: 2px solid #333;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Circle for highlighting on hover */
+        .button::after {
+            content: '';
+            position: absolute;
+            border: 2px solid #333;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        /* Hover text for buttons */
+        .button::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            background: #333;
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            visibility: hidden;
+        }
+
+        .button:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .button:hover::after {
+            opacity: 1;
+        }
+
+        /* Style for the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+        }
+
+        /* Style for input fields and buttons in the modal */
+        .input-field {
+            margin-bottom: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field label {
+            display: block;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        
+        /* Style for input fields and buttons in the modal */
+        .input-field-contact {
+            margin-bottom: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field-contact label {
+            display: block;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .input-field-contact input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .modal-buttons {
+            text-align: right;
+            margin-top: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        /* Style for buttons in the modal */
+        .modal-buttons button {
+            cursor: pointer;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            margin-right: 10px;
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        /* Style for the "Create" button when all fields are filled */
+        .create-button-enabled {
+            color: #fff;
+        }
+
+        /* Style for the "Create" button when not all fields are filled */
+        .modal-buttons button:disabled {
+            background-color: #999; /* Set the background color for a disabled button */
+            color: #fff;
+        }
+
+        .mainText {
+            font-family: sans-serif; /* Set the font family to sans-serif */
+        }
+
+        .class-box {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 1%; /* 5% gap (1% on each side) */
+            width: calc(12% - 2%); /* Adjust width to account for margin */
+        }
+
+        /* ... Your existing styles ... */
+        .class-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .upside-down-arrow {
+            transform: rotate(180deg);
+            display: inline-block;
+        }
+
+        .title {
+            color: #313131;
+            font-family: sans-serif;
+            margin-left: auto;
+        }
+
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <div class="logo">Ink</div>
-        <input type="text" id="searchInput" class="search-bar" placeholder="Search Ink or type a URL">
-        <br>
-        <input type="button" value="Ink Search" class="search-btn" onclick="performSearch()">
+    <div class="header-bar">
+        <button class="button" data-tooltip="Main Menu" onclick="1`">
+            <div class="circle"></div>
+            <img src="UI/Home.png" alt="Menu Icon">
+        </button>        
+        <button class="button add-class-button" data-tooltip="Create Class" onclick="openModal()">
+            <div class="circle"></div>
+            <img src="UI/Plus.png" alt="Plus Icon" style="margin-top: -1px;">
+        </button>
+        <button class="button" data-tooltip="Upload Class" onclick="openFileUploader()">
+            <div class="circle"></div>
+            <img src="UI/Arrow.png" alt="Arrow Icon" style="margin-top: 7px;">
+        </button>
+        <div style="flex: 1;"></div> <!-- Added to push the Google Classroom button to the right -->
+        <h3 class="title" >Classwork</h3>
+        <button class="title-button" data-tooltip="Google Classroom" onclick="navigateToClassroom()">
+            <div class="circle"></div>
+            <img src="UI/Class.png" alt="Class Icon" style="margin-top: 0px;">
+        </button>
     </div>
 
-    <div class="top-right-container">
-        <input type="button" value="Ink-Mail" class="etc-btn" onclick="goToLink('Error401.html')">
-        <input type="button" value="What's New?" class="etc-btn" onclick="showMenu()">
-    </div>
-
-    <!-- New menu container -->
-    <div id="menuContainer" class="menu-container">
-        <p>What's New?</p>
-        <!-- Add menu items as needed -->
-        <ul class="dot-point-list">
-            <li>Calculator Was Added.</li>
-            <li>Updated UI.</li>
-            <!-- Add more items as needed -->
-        </ul>
-        <div class="top-right-container">
-            <input type="button" value="Close" class="etc-btn" onclick="closeMenu()">
+    <!-- The modal -->
+    <div class="modal" id="addClassModal">
+        <div class="modal-content">
+            <h2>Create Class</h2>
+            <div class="input-field">
+                <label for="className">Class Name:</label>
+                <input type="text" id="className">
+            </div>
+            <div class="input-field">
+                <label for="teacher">Teacher:</label>
+                <input type="text" id="teacher">
+            </div>
+            <div class="input-field">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject">
+            </div>
+            <div class="input-field">
+                <label for="room">Room:</label>
+                <input type="text" id="room">
+            </div>
+            <div class="modal-buttons">
+                <button onclick="closeModal()">Cancel</button>
+                <button onclick="createClass()" id="createButton" disabled>Create</button>
+            </div>
         </div>
     </div>
 
-    <script src="./JavaScripts/Main.JS"></script>
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <h2>Contact Me</h2>
+            <form action="https://formsubmit.co/xzavius027@gmail.com" method="POST">
+                <div class="input-field-contact">
+                    <label for="className">First Name:</label>
+                    <input type="text" name="fname" placeholder="John" id="fname">
+                </div>
+                <div class="input-field-contact">
+                    <label for="teacher">Last Name:</label>
+                    <input type="text" name="lname" placeholder="Doe" id="lname">
+                </div>
+                <div class="input-field-contact">
+                    <label for="subject">Gmail:</label>
+                    <input type="text" name="gmail" placeholder="example@gmail.com" id="gmail">
+                </div>
+                <div class="input-field-contact">
+                    <label for="room">Message:</label>
+                    <input type="text" name="message" placeholder="....." id="message">
+                </div>
+                <div class="modal-buttons">
+                    <button onclick='https://formsubmit.co/xzavius027@gmail.com' id="sendButton" disabled>Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
+
+    <div class="class-container" id="classContainer">
+        <!-- Class boxes will be added here -->
+    </div>
+
+    <div class="bottom-bar">   
+        <p class="title">ㅤ</p>   
+        <p class="title">Made By InkyCattt</p>   
+        <button class="help-button" onclick="openContactModal()">
+            <div class="circle"></div>
+            <img src="UI/QM.png" alt="Help Icon">
+        </button>
+    </div>
+
+    <script src="./JavaScripts/Code.JS"></script>
 </body>
 </html>

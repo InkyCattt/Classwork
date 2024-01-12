@@ -23,61 +23,6 @@
             bottom: 0;
             left: 0;
         }
-
-        /* Styling for buttons */
-        .help-button {
-            border: none;
-            background: none;
-            color: #252525;
-            cursor: pointer;
-            font-size: 25px;
-            padding: 10px 20px;
-            position: relative;
-            margin-left: auto;
-            left: -9.5px;
-            margin-bottom: auto;
-            bottom: -10%;
-        }
-
-        /* Circle for highlighting on hover */
-        .help-button::after {
-            content: '';
-            position: absolute;
-            border: 2px solid #333;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 30px;
-            height: 30px;
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-        }
-
-        /* Hover text for buttons */
-        .help-button::before {
-            position: absolute;
-            background: #333;
-            color: #fff;
-            padding: 10px 24px;
-            border-radius: 4px;
-            font-size: 14px;
-            top: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-            visibility: hidden;
-        }
-
-        .help-button:hover::before {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .help-button:hover::after {
-            opacity: 1;
-        }
         
         /* Styling for buttons */
         .title-button {
@@ -259,25 +204,6 @@
             font-family: sans-serif; /* Set the font family to sans-serif */
         }
 
-        /* Style for input fields and buttons in the modal */
-        .input-field-contact {
-            margin-bottom: 10px;
-            font-family: sans-serif; /* Set the font family to sans-serif */
-        }
-
-        .input-field-contact label {
-            display: block;
-            font-family: sans-serif; /* Set the font family to sans-serif */
-        }
-
-        .input-field-contact input {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-family: sans-serif; /* Set the font family to sans-serif */
-        }
-
         .modal-buttons {
             text-align: right;
             margin-top: 10px;
@@ -306,24 +232,20 @@
             color: #fff;
         }
 
+        /* ... Your existing styles ... */
         .class-category-container {
             display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            flex-direction: column; /* Stack categories vertically */
+            flex-wrap: wrap;
+            justify-content: flex-start;
         }
-    
+
         .class-category-box {
             background-color: #ffffff;
             border: 1px solid #ccc;
             border-radius: 10px;
             padding: 10px;
-            margin: 10px 0; /* Add margin between category boxes to space them out */
-            width: calc(32% - 2%); /* Adjust width to account for margin and center alignment */
-        }
-
-        .CName {
-          font-size: 25px; /* You can adjust the size as needed */
+            margin: 1%; /* 5% gap (1% on each side) */
+            width: calc(12% - 2%); /* Adjust width to account for margin */
         }
         
         .mainText {
@@ -357,25 +279,6 @@
         .assignment-name p {
             margin: 5px 0; /* Add margin to the assignment name */
         }
-
-        /* Styling for the pop-up */
-        .popup {
-          position: fixed;
-          bottom: 10px;
-          right: 10px;
-          background-color: red;
-          color: white;
-          padding: 10px;
-          border-radius: 10px;
-          opacity: 1; /* Initial opacity */
-          transition: opacity 1s ease-in-out; /* Add a transition effect for opacity */
-        }
-    
-        .popup h2 {
-          font-size: 15px; /* Change the font size to 15px or any other preferred size */
-          font-family: sans-serif; /* Set the font family to sans-serif */
-          margin: 0; /* Remove default margin to align text properly */
-        }
         
         .title {
             color: #313131;
@@ -402,11 +305,6 @@
             <img src="UI/Class.png" alt="Class Icon" style="margin-top: 0px;">
         </button>
     </div>
-
-      <!-- Pop-up content -->
-      <div class="popup">
-        <h2>Warning! This page is under construction and may not provide complete information. Proceed with awareness.</h2>
-      </div
 
     <!-- The modal -->
     <div class="modal" id="addCategoryModal">
@@ -449,33 +347,6 @@
         <!-- Class boxes will be added here -->
     </div>
 
-    <div class="modal" id="contactModal">
-        <div class="modal-content">
-            <h2>Contact Me</h2>
-            <form action="https://formsubmit.co/xzavius027@gmail.com" method="POST">
-                <div class="input-field-contact">
-                    <label for="className">First Name:</label>
-                    <input type="text" name="fname" placeholder="John" id="fname">
-                </div>
-                <div class="input-field-contact">
-                    <label for="teacher">Last Name:</label>
-                    <input type="text" name="lname" placeholder="Doe" id="lname">
-                </div>
-                <div class="input-field-contact">
-                    <label for="subject">Gmail:</label>
-                    <input type="text" name="gmail" placeholder="example@gmail.com" id="gmail">
-                </div>
-                <div class="input-field-contact">
-                    <label for="room">Message:</label>
-                    <input type="text" name="message" placeholder="....." id="message">
-                </div>
-                <div class="modal-buttons">
-                    <button onclick='https://formsubmit.co/xzavius027@gmail.com' id="sendButton" disabled>Send</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <div class="bottom-bar">   
         <p class="title">ㅤ</p>   
         <p class="title">Made By InkyCattt</p>   
@@ -485,6 +356,6 @@
         </button>
     </div>
 
-    <script src="./JavaScripts/ClassCode.JS"></script> 
+    <script src="./JavaScripts/ClassCode.JS"></script>
 </body>
 </html>
